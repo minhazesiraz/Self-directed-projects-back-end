@@ -30,6 +30,7 @@ async function run() {
 
       const database = client.db('self_directed_projects');
       const usersGathering = database.collection('users');
+      const storesGathering = database.collection('stores');
 
       app.get("/APIs/users", async (req, res) => {
          const result = await usersGathering.find().toArray();
@@ -52,6 +53,32 @@ async function run() {
             return res.send({ message: "User account already registered.", insertedId: null });
          }
          const result = await usersGathering.insertOne(user);
+         res.send(result);
+      })
+
+      app.patch("/APIs/users/:uid", async (req, res) => {
+         const job = req.body;
+         const uid = req.params.uid;
+         const filter = { _id: new ObjectId(uid) };
+         const updateDoc = {
+            $set: {
+               role: job.role,
+            }
+         }
+         const result = await usersGathering.updateOne(filter, updateDoc);
+         res.send(result);
+      })
+
+      app.delete("/APIs/users/:uid", async (req, res) => {
+         const uid = req.params.uid;
+         const query = { _id: new ObjectId(uid) }
+         const result = await usersGathering.deleteOne(query);
+         res.send(result);
+      })
+
+      // digital offerings
+      app.get("/APIs/stores", async (req, res) => {
+         const result = await storesGathering.find().toArray();
          res.send(result);
       })
 
