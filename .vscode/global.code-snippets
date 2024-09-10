@@ -1,0 +1,92 @@
+{
+   /* prefix: log, rjsc, lwf, usee, iusee, ipropt & putre */
+   "CURIOUS: PRINT TO CONSOLE": {
+      "prefix": "log",
+      "body": [
+         "console.log('$1');",
+         "$2"
+      ],
+      "description": "LOG OUTPUT TO CONSOLE."
+   },
+   "CURIOUS: REACTJS SERVER COMPONENTS": {
+      "prefix": "rjsc",
+      "body": [
+         "import React from 'react';",
+         "",
+         "const ${1:${TM_FILENAME_BASE}} = () => {",
+         "    return (",
+         "        <>",
+         "            $2",
+         "        </>",
+         "    );",
+         "};",
+         "",
+         "export default ${1:${TM_FILENAME_BASE}};"
+      ],
+      "description": "REACTJS SERVER COMPONENTS."
+   },
+   "CURIOUS: LOADER - FUNC": {
+      "prefix": "lwf",
+      "body": [
+         "loader: () => fetch('$1')"
+      ],
+      "description": "CREATES A LOADER FUNCTION USING FETCH FOR A SPECIFIED - UNIFORM RESOURCE LOCATOR."
+   },
+   "CURIOUS: USEEFFECT - FUNC": {
+      "prefix": "usee",
+      "body": [
+         "useEffect(() => {",
+         "    $1",
+         "}, [$2]);"
+      ],
+      "description": "THE USEEFFECT HOOK ALLOWS YOU TO PERFORM SIDE EFFECTS IN YOUR COMPONENTS."
+   },
+   "CURIOUS: USEEFFECT - IMPORT": {
+      "prefix": "iusee",
+      "body": [
+         "import { useEffect } from 'react';$0"
+      ],
+      "description": "IMPORT USEEFFECT FROM REACTJS LIBRARY."
+   },
+   "CURIOUS: PROPTYPES - IMPORT": {
+      "prefix": "ipropt",
+      "body": [
+         "import PropTypes from 'prop-types';$0"
+      ],
+      "description": "IMPORT PROPTYPES FROM PROP-TYPES LIBRARY."
+   },
+   "CURIOUS: FETCH PUT/PATCH (UPDATE - CRUD) REQUEST": {
+      "prefix": "putre",
+      "body": [
+         "fetch('', {",
+         "    method: 'PUT',",
+         "    headers: {",
+         "        'content-type': 'application/json'",
+         "    },",
+         "    body: JSON.stringify()",
+         "})",
+         "    .then((res) => res.json())",
+         "    .then((data) => {",
+         "        console.log(data);",
+         "    });"
+      ],
+      "description": "FETCH PUT/PATCH (UPDATE - CRUD) REQUEST WITH JSON DATA."
+   },
+   "CURIOUS: FETCH POST (CREATE - CRUD) REQUEST": {
+      "prefix": "postre",
+      "body": [
+         "fetch('', {",
+         "    method: 'POST',",
+         "    headers: {",
+         "        'content-type': 'application/json'",
+         "    },",
+         "    body: JSON.stringify()",
+         "})",
+         "    .then((res) => res.json())",
+         "    .then((data) => {",
+         "        console.log(data);",
+         "    });"
+      ],
+      "description": "FETCH POST (CREATE - CRUD) REQUEST WITH JSON DATA."
+   }
+}

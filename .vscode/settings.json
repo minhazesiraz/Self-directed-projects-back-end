@@ -1,0 +1,82 @@
+{
+   /* specifies the path to custom 'atDirectives' data file. */
+   "css.customData": [
+      ".vscode/atDirectives.json"
+   ],
+   /* sets the color theme to "learn with sumit theme - dracula version" */
+   "workbench.colorTheme": "Learn with Sumit Theme - Dracula version",
+   "workbench.iconTheme": "Symbols of VSCode - Shades of Gray",
+   "workbench.tree.indent": 16,
+   /* customizes colors for the activity bar - delete the codes from settings dot json when using database. */
+   "workbench.colorCustomizations": {
+      /* "activityBar.background": "#84cc16",
+      "activityBar.activeBackground": "#ffffff59",
+      "activityBar.activeBorder": "#ffffff",
+      "activityBar.foreground": "#ffffff",
+      "activityBar.inactiveForeground": "#ffffffa6",
+      "activityBarBadge.background": "#84cc16",
+      "activityBarBadge.foreground": "#ffffffa6", */
+      "tab.activeBorderTop": "#84cc16"
+   },
+   "git.autofetch": true,
+   /* controls whether #editor.tabsize and #editor.insertspaces will be automatically detected when a file is opened based on the file contents. */
+   "editor.defaultFormatter": null,
+   "editor.detectIndentation": false,
+   "editor.insertSpaces": true,
+   "editor.tabSize": 3,
+   "editor.lineNumbers": "on",
+   "editor.letterSpacing": 0,
+   "editor.formatOnSave": true,
+   "breadcrumbs.enabled": false,
+   /* settings specific to javascript react files. */
+   "[javascriptreact]": {
+      /* organize imports action explicitly on save. */
+      "editor.codeActionsOnSave": {
+         "source.organizeImports": "explicit",
+         /* "source.fixAll.eslint": "explicit" */
+      }
+   },
+   /* settings specific to javascript files. */
+   "[javascript]": {
+      /* organize imports action explicitly on save. */
+      "editor.codeActionsOnSave": {
+         "source.organizeImports": "explicit",
+         /* "source.fixAll.eslint": "explicit" */
+      }
+   },
+   /* fonts download by the links. - https://www.jetbrains.com/lp/mono/ */
+   "editor.fontFamily": "'JetBrains Mono', monospace",
+   "editor.fontLigatures": true,
+   "editor.fontWeight": "normal",
+   "editor.fontSize": 14,
+   "editor.wordWrap": "on",
+   "editor.minimap.enabled": false,
+   /* comment's */
+   "editor.tokenColorCustomizations": {
+      "comments": "#9c9c9c",
+      "textMateRules": [
+         {
+            "scope": "comment",
+            "settings": {
+               "fontStyle": "italic"
+            }
+         }
+      ]
+   },
+   /* cursor settings for editor. */
+   "editor.cursorSmoothCaretAnimation": "explicit",
+   "editor.cursorBlinking": "expand",
+   /* https://www.youtube.com/watch?v=ii8GaRjRoNI&t=608s */
+   "emmet.includeLanguages": {
+      "javascript": "javascriptreact"
+   },
+   /* automatically updates imports on file move for javascript files. */
+   "javascript.updateImportsOnFileMove.enabled": "always",
+   /* file associations for javascript react files. */
+   "files.associations": {
+      "*.jsx": "javascriptreact",
+      "*.js": "javascriptreact"
+   },
+   /* specifies user-defined words for spell checking. */
+   "cSpell.userWords": []
+}

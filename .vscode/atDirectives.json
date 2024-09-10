@@ -1,0 +1,36 @@
+{
+    "version": "3.4.3",
+    "atDirectives": [
+        {
+            "name": "@tailwind",
+            "url": "https://tailwindcss.com/docs/functions-and-directives#tailwind",
+            "references": [
+                {
+                    "name": "Tailwind Documentation : Functions & Directives",
+                    "url": "https://tailwindcss.com/docs/functions-and-directives",
+                    "description": "https://tailwindcss.com/blog"
+                }
+            ]
+        },
+        {
+            "name": "@layer",
+            "url": "https://tailwindcss.com/docs/functions-and-directives#layer"
+        },
+        {
+            "name": "@apply",
+            "url": "https://tailwindcss.com/docs/functions-and-directives#apply"
+        },
+        {
+            "name": "@config",
+            "url": "https://tailwindcss.com/docs/functions-and-directives#config"
+        },
+        {
+            "name": "@variants",
+            "url": "https://tailwindcss.com/docs/upgrade-guide#replace-variants-with-layer"
+        },
+        {
+            "name": "@responsive",
+            "url": "https://tailwindcss.com/docs/upgrade-guide#replace-variants-with-layer"
+        }
+    ]
+}
