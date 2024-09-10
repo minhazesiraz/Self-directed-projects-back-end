@@ -77,8 +77,15 @@ async function run() {
       })
 
       // digital offerings
-      app.get("/APIs/stores", async (req, res) => {
+      app.get("/APIs/digital-offerings", async (req, res) => {
          const result = await storesGathering.find().toArray();
+         res.send(result);
+      })
+
+      app.get("/APIs/digital-offerings/:pid", async (req, res) => {
+         const pid = req.params.pid;
+         const query = { _id: new ObjectId(pid) };
+         const result = await storesGathering.findOne(query);
          res.send(result);
       })
 
