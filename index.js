@@ -31,6 +31,7 @@ async function run() {
       const database = client.db('self_directed_projects');
       const usersGathering = database.collection('users');
       const storesGathering = database.collection('stores');
+      const cartsGathering = database.collection('carts');
 
       app.get("/APIs/users", async (req, res) => {
          const result = await usersGathering.find().toArray();
@@ -86,6 +87,23 @@ async function run() {
          const pid = req.params.pid;
          const query = { _id: new ObjectId(pid) };
          const result = await storesGathering.findOne(query);
+         res.send(result);
+      })
+
+      // your carts
+      app.get('/APIs/carts', async (req, res) => {
+         const email = req.query.email;
+         const query = { email: email };
+         const result = await cartsGathering.find(query).toArray();
+         res.send(result);
+         // console.log(result);
+      })
+
+      app.post('/APIs/carts', async (req, res) => {
+         const jobCarts = req.body;
+         jobCarts.stores_id = new ObjectId(jobCarts.stores_id);
+         console.log(jobCarts.stores_id);
+         const result = await cartsGathering.insertOne(jobCarts);
          res.send(result);
       })
 
