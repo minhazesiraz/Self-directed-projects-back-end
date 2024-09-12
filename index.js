@@ -107,6 +107,31 @@ async function run() {
          res.send(result);
       })
 
+      // create-payment-intent
+      const calculateOrderAmount = (coins) => {
+         const amount = parseInt(coins * 100);
+         return amount;
+      };
+
+      app.post("/create-payment-intent", async (req, res) => {
+         const { coins } = req.body;
+
+         // Create a PaymentIntent with the order amount and currency
+         const paymentIntent = await stripe.paymentIntents.create({
+            amount: calculateOrderAmount(coins),
+            currency: "usd",
+            automatic_payment_methods: {
+               enabled: true,
+            },
+            /* https://docs.stripe.com/api/payment_methods/object */
+            // payment_method_types: payment_method_types
+         });
+
+         res.send({
+            clientSecret: paymentIntent.client_secret,
+         });
+      });
+
       // Send a ping to confirm a successful connection
       await client.db("admin").command({ ping: 1 });
       console.log("Pinged your deployment. You successfully connected to MongoDB!");
