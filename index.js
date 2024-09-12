@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const moment = require('moment');
+const stripe = require("stripe")('sk_test_51PxwAqFUfWsQSXsiG948bWvez4aRGW8zch3wd8GrcH8GtgnYtzDLOp3GsPgqguHYcxLTO6XQL45MnRGq22dq2qKy00C0kJ4013');
 require('dotenv').config();
 const port = process.env.PORT || 5000;
 
@@ -32,6 +33,7 @@ async function run() {
       const usersGathering = database.collection('users');
       const storesGathering = database.collection('stores');
       const cartsGathering = database.collection('carts');
+      const paymentsGathering = database.collection('payments');
 
       app.get("/APIs/users", async (req, res) => {
          const result = await usersGathering.find().toArray();
@@ -113,7 +115,7 @@ async function run() {
          return amount;
       };
 
-      app.post("/create-payment-intent", async (req, res) => {
+      app.post("/APIs/create-payment-intent", async (req, res) => {
          const { coins } = req.body;
 
          // Create a PaymentIntent with the order amount and currency
@@ -131,6 +133,28 @@ async function run() {
             clientSecret: paymentIntent.client_secret,
          });
       });
+
+      app.post('/APIs/payments', async (req, res) => {
+         try {
+            const doc = req.body;
+            console.log(doc);
+            doc.carts_id = doc.carts_id.map(job => new ObjectId(job));
+            doc.products_id = doc.products_id.map(job => new ObjectId(job));
+            const paymentsResult = await paymentsGathering.insertOne(doc);
+            const query = {
+               _id: {
+                  // $in: doc.carts_id.map(job => new ObjectId(job))
+                  $in: doc.carts_id
+               }
+            }
+            const deleteResult = await cartsGathering.deleteMany(query);
+            res.send({ paymentsResult, deleteResult });
+         }
+         catch (error) {
+            console.error('Error in /payments endpoint:', error);
+            res.status(500).send('Internal Server Error');
+         }
+      })
 
       // Send a ping to confirm a successful connection
       await client.db("admin").command({ ping: 1 });
